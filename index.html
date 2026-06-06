@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>محمد نجفی | توسعه دهنده فرانت اند</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: "IRANSansX";
+            src: url("font/IRANSansX-Regular (2).woff2") format("woff2");
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: "IRANSansX";
+            src: url("font/IRANSansX-DemiBold.woff2") format("woff2");
+            font-weight: 700;
+        }
+
+        * {
+            font-family: "IRANSansX", sans-serif !important;
+        }
+
+        @keyframes revealItem {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* انیمیشن برای دایره‌های متحرک پس‌زمینه */
+        @keyframes float1 {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(50px, 50px) rotate(180deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        @keyframes float2 {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-50px, 30px) rotate(-180deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(-360deg);
+            }
+        }
+
+        @keyframes float3 {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, -40px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        /* انیمیشن برای SVGهای تزئینی */
+        @keyframes rotateSlow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                filter: drop-shadow(0 0 5px rgba(191, 39, 21, 0.3));
+            }
+
+            50% {
+                opacity: 0.6;
+                filter: drop-shadow(0 0 20px rgba(191, 39, 21, 0.6));
+            }
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes revealNavItem {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .nav-item {
+            opacity: 0;
+            transform: translateX(60px);
+            animation: revealNavItem 0.35s ease-out forwards;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #A94438;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c45545;
+        }
+
+        /* انیمیشن برای مهارت‌ها */
+        .skill-item {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .skill-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .progress-bar {
+            width: 0%;
+            transition: width 1.5s ease-out;
+        }
+
+        .skill-item.visible .progress-bar {
+            width: var(--target-width);
+        }
+
+        /* انیمیشن برای SVGها */
+        .svg-rotate {
+            animation: rotateSlow 30s linear infinite;
+        }
+
+        .svg-pulse {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        .svg-float {
+            animation: float3 8s ease-in-out infinite;
+        }
+
+        /* رفع مشکل اسکرول افقی */
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .no-horizontal-scroll {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body class="text-white min-h-screen relative">
+    <div class="no-horizontal-scroll">
+
+        <!-- پس‌زمینه گرادیان با افکت حرکت -->
+        <div
+            class="fixed inset-0 -z-10 bg-gradient-to-br from-[#1a0a0a] via-[#0a0a0a] to-[#1a0505] animate-[gradientBG_15s_ease_infinite] bg-[length:200%_200%]">
+        </div>
+
+        <!-- دایره‌های تزئینی متحرک -->
+        <div class="fixed inset-0 -z-10 overflow-hidden">
+            <div
+                class="absolute top-20 left-10 w-72 h-72 bg-[#A94438]/10 rounded-full blur-3xl animate-[float1_20s_ease-in-out_infinite]">
+            </div>
+            <div
+                class="absolute bottom-20 right-10 w-96 h-96 bg-[#c45545]/10 rounded-full blur-3xl animate-[float2_25s_ease-in-out_infinite]">
+            </div>
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#A94438]/5 rounded-full blur-3xl animate-[float3_30s_ease-in-out_infinite]">
+            </div>
+            <div
+                class="absolute top-40 right-1/4 w-48 h-48 bg-[#ff6b5b]/5 rounded-full blur-3xl animate-[float1_18s_ease-in-out_infinite] delay-1000">
+            </div>
+            <div
+                class="absolute bottom-40 left-1/3 w-64 h-64 bg-[#A94438]/8 rounded-full blur-3xl animate-[float2_22s_ease-in-out_infinite] delay-500">
+            </div>
+        </div>
+
+        <!-- ==================== SVGهای تزئینی ==================== -->
+
+        <!-- گوشه بالا راست - Subtraction 1 -->
+        <div class="fixed top-5 right-5 z-0 opacity-50 pointer-events-none svg-rotate">
+            <img src="pic-s/Subtraction 1.svg" class="w-20 h-20 md:w-28 md:h-28">
+        </div>
+
+        <!-- گوشه بالا چپ - Ellipse 1 -->
+        <div class="fixed top-5 left-5 z-0 opacity-40 pointer-events-none svg-pulse">
+            <img src="pic-s/Ellipse 1.svg" class="w-16 h-16 md:w-24 md:h-24">
+        </div>
+
+        <!-- گوشه پایین راست - Group 1 -->
+        <div class="fixed bottom-5 right-5 z-0 opacity-40 pointer-events-none svg-rotate"
+            style="animation-duration: 25s;">
+            <img src="pic-s/Group 1.svg" class="w-24 h-24 md:w-32 md:h-32">
+        </div>
+
+        <!-- گوشه پایین چپ - Intersection 1 -->
+        <div class="fixed bottom-5 left-5 z-0 opacity-45 pointer-events-none svg-float">
+            <img src="pic-s/Intersection 1.svg" class="w-20 h-20 md:w-28 md:h-28">
+        </div>
+
+        <!-- المان شناور در سمت راست -->
+        <div class="fixed top-1/3 right-8 z-0 opacity-25 pointer-events-none svg-float"
+            style="animation-duration: 12s;">
+            <img src="pic-s/Subtraction 1.svg" class="w-12 h-12 md:w-16 md:h-16">
+        </div>
+
+        <!-- المان شناور در سمت چپ -->
+        <div class="fixed bottom-1/3 left-8 z-0 opacity-25 pointer-events-none svg-float"
+            style="animation-duration: 14s; animation-delay: 2s;">
+            <img src="pic-s/Ellipse 1.svg" class="w-14 h-14 md:w-20 md:h-20">
+        </div>
+
+        <!-- المان تزئینی پشت عکس پروفایل -->
+        <div class="fixed top-1/2 right-1/4 z-0 opacity-15 pointer-events-none svg-rotate"
+            style="animation-duration: 40s; transform: translateY(-50%);">
+            <img src="pic-s/Intersection 1.svg" class="w-64 h-64 md:w-96 md:h-96">
+        </div>
+
+        <!-- پترن نقطه‌چین ظریف -->
+        <div class="fixed inset-0 -z-10 opacity-5"
+            style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 1px); background-size: 40px 40px;">
+        </div>
+
+        <header class="p-5 relative z-50">
+
+            <div class="flex justify-between items-center">
+                <div class="md:hidden">
+                    <button id="menuBtn" class="text-white text-4xl
+                        drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]
+                        transition-all duration-300
+                        hover:scale-110
+                        hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.8)]">
+                        ☰
+                    </button>
+                </div>
+
+                <div class="flex-shrink-0 md:hidden">
+                    <img src="pic-s/Picsart_23-10-29_09-23-52-802.png" alt="لوگو"
+                        class="w-12 h-12 shadow-lg hover:scale-105 transition-transform ">
+                </div>
+            </div>
+
+            <nav class="hidden md:flex justify-center items-center gap-5 md:gap-8 mt-4">
+
+    <div class="overflow-hidden">
+        <a href="#home"
+            class="nav-item block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl
+            transition-all duration-300
+            hover:bg-white/10
+            hover:backdrop-blur-md
+            hover:border
+            hover:border-white/20
+            hover:rounded-full
+            hover:scale-105
+            hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.2)]"
+            style="animation-delay:0s">
+            خانه
+        </a>
+    </div>
+
+    <div class="overflow-hidden">
+        <a href="#about"
+            class="nav-item block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl
+            transition-all duration-300
+            hover:bg-white/10
+            hover:backdrop-blur-md
+            hover:border
+            hover:border-white/20
+            hover:rounded-full
+            hover:scale-105
+            hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.2)]"
+            style="animation-delay:0.18s">
+            درباره من
+        </a>
+    </div>
+
+    <div class="overflow-hidden">
+        <a href="#skills"
+            class="nav-item block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl
+            transition-all duration-300
+            hover:bg-white/10
+            hover:backdrop-blur-md
+            hover:border
+            hover:border-white/20
+            hover:rounded-full
+            hover:scale-105
+            hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.2)]"
+            style="animation-delay:0.36s">
+            مهارت ها
+        </a>
+    </div>
+
+    <div class="overflow-hidden">
+        <a href="#portfolio"
+            class="nav-item block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl
+            transition-all duration-300
+            hover:bg-white/10
+            hover:backdrop-blur-md
+            hover:border
+            hover:border-white/20
+            hover:rounded-full
+            hover:scale-105
+            hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.2)]"
+            style="animation-delay:0.54s">
+            نمونه کارها
+        </a>
+    </div>
+
+    <div class="overflow-hidden">
+        <a href="#contact"
+            class="nav-item block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl
+            transition-all duration-300
+            hover:bg-white/10
+            hover:backdrop-blur-md
+            hover:border
+            hover:border-white/20
+            hover:rounded-full
+            hover:scale-105
+            hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.2)]"
+            style="animation-delay:0.72s">
+            ارتباط با من
+        </a>
+    </div>
+
+</nav>
+
+            <div id="mobileMenu" class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-500">
+                <div class="mt-4 rounded-3xl
+                    border border-white/10
+                    bg-white/5
+                    backdrop-blur-2xl
+                    p-4
+                    shadow-[0_0_40px_rgba(255,255,255,0.08)]
+                    text-right">
+
+                    <div class="overflow-hidden">
+                        <a href="#home"
+                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">
+                            خانه
+                        </a>
+                    </div>
+                    <div class="overflow-hidden">
+                        <a href="#about"
+                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">
+                            درباره من
+                        </a>
+                    </div>
+                    <div class="overflow-hidden">
+                        <a href="#skills"
+                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">
+                            مهارت ها
+                        </a>
+                    </div>
+                    <div class="overflow-hidden">
+                        <a href="#portfolio"
+                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">
+                            نمونه کارها
+                        </a>
+                    </div>
+                    <div class="overflow-hidden">
+                        <a href="#contact"
+                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">
+                            ارتباط با من
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+        <main class="container mx-auto px-1 relative z-10">
+
+            <!-- بخش خانه (Hero) -->
+            <section id="home"
+                class="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 min-h-[70vh] md:min-h-[80vh] mt-10 md:-mt-16">
+
+                <div class="text-center md:text-right flex-1 order-2 md:order-1 mt-8 md:mt-0" data-aos="fade-up"
+                    data-aos-duration="800">
+                    <h1 class="text-[#BF2715] text-4xl md:text-8xl font-bold">محمد نجفی</h1>
+                    <br>
+                    <h2 class="text-gray-400 text-xl md:text-3xl font-bold mt-2" data-aos="fade-up"
+                        data-aos-duration="800" data-aos-delay="100">
+                        توسعه دهنده فرانت اند
+                    </h2>
+                    <br>
+                    <h2 class="text-gray-400 text-xl md:text-3xl font-bold" data-aos="fade-up" data-aos-duration="800"
+                        data-aos-delay="200">
+                        طراح UI/UX
+                    </h2>
+                    <br>
+                    <h2 class="text-gray-400 text-xl md:text-3xl font-bold" data-aos="fade-up" data-aos-duration="800"
+                        data-aos-delay="300">
+                        طراح Adobe XD
+                    </h2>
+
+                    <div class="mt-6 md:mt-8" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                        <a href="#portfolio" class="inline-block px-6 md:px-8 py-2 md:py-3 bg-[#A94438]/20 text-white rounded-full 
+                            backdrop-blur-md border border-white/20 
+                            hover:bg-[#BF2715]/40 hover:border-white/30 
+                            transition-all duration-300 shadow-lg hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.2)] 
+                            hover:scale-105 text-sm md:text-base">
+                            مشاهده نمونه کارها
+                        </a>
+                    </div>
+
+                    <div class="mt-10 md:mt-16 text-gray-500 text-xs md:text-sm" data-aos="fade-up"
+                        data-aos-delay="500">
+                        اسکرول کنید ↓
+                    </div>
+                </div>
+
+                <div class="flex justify-center md:justify-start order-1 md:order-2 mt-4 md:mt-0" data-aos="fade-left"
+                    data-aos-duration="800" data-aos-delay="150">
+                    <img src="pic-s/Picsart_23-10-29_09-23-52-802.png" class="w-48 h-48 md:w-96 md:h-96 ">
+                </div>
+            </section>
+
+            <!-- بخش درباره من -->
+            <section id="about" class="py-20 border-t border-white/10">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#BF2715] mb-8" data-aos="fade-up">درباره من</h2>
+                <p class="text-gray-300 text-lg leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+                    من محمد نجفی هستم. توسعه دهنده فرانت اند و طراح رابط کاربری با تمرکز روی طراحی دیجیتال و ایجاد تجربه
+                    های
+                    کاربری مدرن و حرفه ای.
+                    عاشق طراحی، تصمیم گیری و مدیریت سیستم های مختلف هستم و همیشه به دنبال یادگیری تکنولوژی های جدید برای
+                    ساخت پروژه های خلاقانه و با کیفیت.
+                </p>
+            </section>
+
+            <!-- بخش مهارت ها -->
+            <section id="skills" class="py-20 border-t border-white/10">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#BF2715] mb-8" data-aos="fade-up">مهارت های من</h2>
+                <div class="space-y-6">
+                    <div class="skill-item" data-skill="95">
+                        <div class="flex justify-between mb-2">
+                            <span>HTML</span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-700/50 rounded-full h-3 overflow-hidden">
+                            <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="90">
+                        <div class="flex justify-between mb-2">
+                            <span>CSS</span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-700/50 rounded-full h-3 overflow-hidden">
+                            <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="95">
+                        <div class="flex justify-between mb-2">
+                            <span>Tailwind CSS</span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-700/50 rounded-full h-3 overflow-hidden">
+                            <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="85">
+                        <div class="flex justify-between mb-2">
+                            <span>JavaScript</span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-700/50 rounded-full h-3 overflow-hidden">
+                            <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="80">
+                        <div class="flex justify-between mb-2">
+                            <span>React</span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-700/50 rounded-full h-3 overflow-hidden">
+                            <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="90">
+                        <div class="flex justify-between mb-2">
+                            <span>Git & GitHub</span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-700/50 rounded-full h-3 overflow-hidden">
+                            <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="85">
+                        <div class="flex justify-between mb-2">
+                            <span>Adobe XD</span>
+                            <span class="skill-percent">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-700/50 rounded-full h-3 overflow-hidden">
+                            <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- بخش نمونه کارها -->
+            <section id="portfolio" class="py-20 border-t border-white/10">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#BF2715] mb-8" data-aos="fade-up">نمونه کارهای منتخب
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <a href="pet-dock.html" class="block group">
+                        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 
+                hover:bg-white/10 transition-all duration-300 
+                hover:scale-105">
+
+                            <div class="overflow-hidden rounded-lg mb-4">
+                                <img src="pic-s/pik.png" alt="دکتر استوک"
+                                    class="w-full transition-all duration-500 group-hover:scale-110">
+                            </div>
+
+                            <h3 class="text-xl font-bold mb-2">
+                                وبسایت فروشگاهی
+                            </h3>
+
+                            <p class="text-gray-400">
+                                دکتر استوک
+                            </p>
+
+                            <p class="text-gray-400">
+                                فروشگاه لپ تاپ های استوک / نو
+                            </p>
+
+                            <p class="text-gray-400">
+                                طراحی و توسعه فرانت اند
+                            </p>
+
+                        </div>
+                    </a>
+                    <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-full h-40 bg-gradient-to-br from-[#BF2715] to-[#BF2715] rounded-lg mb-4"></div>
+                        <h3 class="text-xl font-bold mb-2">وبسایت</h3>
+                        <p class="text-gray-400">طراحی UI/UX</p>
+                    </div>
+                    <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-full h-40 bg-gradient-to-br from-[#BF2715] to-[#BF2715] rounded-lg mb-4"></div>
+                        <h3 class="text-xl font-bold mb-2">وبسایت</h3>
+                        <p class="text-gray-400">طراحی رابط کاربری</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- بخش ارتباط با من -->
+            <section id="contact" class="py-20 border-t border-white/10">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#BF2715] mb-8 text-center md:text-right"
+                    data-aos="fade-up">
+                    ارتباط با من
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div data-aos="fade-left" class="text-center md:text-right">
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-[#BF2715] mb-2">تلگرام</h3>
+                                <a href="t.me/Mohammad_369_888" class="text-gray-300">t.me/Mohammad_369_888</a>
+                            </div>
+                            <div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#BF2715] mb-2">شماره تماس</h3>
+                                    <p class="text-gray-300">09363316042</p>
+                                </div>
+                                <h3 class="text-xl font-bold text-[#BF2715] mb-2">ایمیل</h3>
+                                <p class="text-gray-300">mohammadbaghernajafi.com@gmail.com</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-[#BF2715] mb-2">موقعیت</h3>
+                                <p class="text-gray-300"> قم / ایران</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-right">
+                        <form class="space-y-4">
+                            <div>
+                                <input type="email" placeholder="ایمیل شما"
+                                    class="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg focus:outline-none focus:border-[#A94438] transition-colors text-center md:text-right">
+                            </div>
+                            <div>
+                                <textarea rows="4" placeholder="پیام شما"
+                                    class="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg focus:outline-none focus:border-[#A94438] transition-colors text-center md:text-right"></textarea>
+                            </div>
+                            <div class="text-center md:text-right">
+                                <button type="submit"
+                                    class="px-6 py-3 bg-[#C42F1D]/20 backdrop-blur-md border border-white/20 text-white rounded-lg hover:bg-[#C42F1D]/40 transition-all duration-300">
+                                    ارسال پیام
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="border-t border-white/10 py-6 text-center text-gray-500 relative z-10">
+            <p>© 2025 محمد نجفی. تمامی حقوق محفوظ است.</p>
+        </footer>
+
+    </div>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+            offset: 100
+        });
+
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const menuItems = document.querySelectorAll(".mobile-item");
+
+        let isOpen = false;
+
+        function openMenu() {
+            mobileMenu.classList.remove("max-h-0", "opacity-0");
+            mobileMenu.classList.add("max-h-[500px]", "opacity-100");
+            menuBtn.innerHTML = "✕";
+
+            menuItems.forEach((item, index) => {
+                item.style.transform = "";
+                item.style.opacity = "";
+                item.style.animation = `revealItem 0.4s ease-out forwards`;
+                item.style.animationDelay = `${index * 0.15}s`;
+            });
+
+            isOpen = true;
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove("max-h-[500px]", "opacity-100");
+            mobileMenu.classList.add("max-h-0", "opacity-0");
+            menuBtn.innerHTML = "☰";
+
+            menuItems.forEach((item) => {
+                item.style.animation = "";
+                item.style.animationDelay = "";
+            });
+
+            isOpen = false;
+        }
+
+        menuBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        document.addEventListener("click", (e) => {
+            if (isOpen && !mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth >= 768) {
+                closeMenu();
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+                if (isOpen) closeMenu();
+            });
+        });
+
+        const skillItems = document.querySelectorAll('.skill-item');
+
+        function checkSkills() {
+            skillItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight - 100;
+
+                if (isVisible && !item.classList.contains('visible')) {
+                    item.classList.add('visible');
+
+                    const targetPercent = item.getAttribute('data-skill');
+                    const progressBar = item.querySelector('.progress-bar');
+                    const percentSpan = item.querySelector('.skill-percent');
+
+                    if (progressBar) {
+                        progressBar.style.setProperty('--target-width', targetPercent + '%');
+                        progressBar.style.width = targetPercent + '%';
+                    }
+
+                    if (percentSpan) {
+                        let current = 0;
+                        const interval = setInterval(() => {
+                            if (current >= targetPercent) {
+                                clearInterval(interval);
+                            } else {
+                                current++;
+                                percentSpan.textContent = current + '%';
+                            }
+                        }, 15);
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkSkills);
+        window.addEventListener('load', checkSkills);
+    </script>
+</body>
+
+</html>
