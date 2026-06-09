@@ -1955,24 +1955,30 @@
                     </div>
                 </div>
 
-                <div data-aos="fade-right">
-                    <form class="space-y-4">
-                        <div>
-                            <input type="email" placeholder="ایمیل شما"
-                                class="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg focus:outline-none focus:border-[#A94438] transition-colors text-center md:text-right">
-                        </div>
-                        <div>
-                            <textarea rows="4" placeholder="پیام شما"
-                                class="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg focus:outline-none focus:border-[#A94438] transition-colors text-center md:text-right"></textarea>
-                        </div>
-                        <div class="text-center md:text-right">
-                            <button type="submit"
-                                class="px-6 py-3 bg-[#C42F1D]/20 backdrop-blur-md border border-white/20 text-white rounded-lg hover:bg-[#C42F1D]/40 transition-all duration-300">
-                                ارسال پیام
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+
+                    <input type="hidden" name="access_key" value="f24a02e8-6685-446e-8d27-ba6300fb6f6a">
+
+                    <div>
+                        <input type="email" name="email" placeholder="ایمیل شما" required
+                            class="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg focus:outline-none focus:border-[#A94438] transition-colors text-center md:text-right">
+                    </div>
+
+                    <div>
+                        <textarea rows="4" name="message" placeholder="پیام شما" required
+                            class="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg focus:outline-none focus:border-[#A94438] transition-colors text-center md:text-right"></textarea>
+                    </div>
+
+                    <div class="text-center md:text-right">
+                        <button type="submit"
+                            class="px-6 py-3 bg-[#C42F1D]/20 backdrop-blur-md border border-white/20 text-white rounded-lg hover:bg-[#C42F1D]/40 transition-all duration-300">
+                            ارسال پیام
+                        </button>
+                    </div>
+
+                </form>
+                <!-- پیام نتیجه -->
+                <p id="result" class="mt-4 text-center"></p>
             </div>
         </section>
 
@@ -2056,6 +2062,31 @@
         if (processSection) {
             processObserver.observe(processSection);
         }
+        const form = document.getElementById("contactForm");
+        const result = document.getElementById("result");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            const response = await fetch(
+                "https://api.web3forms.com/submit",
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
+
+            const data = await response.json();
+
+            if (data.success) {
+                result.innerHTML = "✅ پیام با موفقیت ارسال شد";
+                form.reset();
+            } else {
+                result.innerHTML = "❌ خطا در ارسال پیام";
+            }
+        });
     </script>
 </body>
 
