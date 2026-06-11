@@ -295,8 +295,7 @@
                 </div>
 
                 <div class="flex-shrink-0 md:hidden">
-                    <img src="pic-s/logo-2.webp" alt="لوگو"
-                        class="w-12 h-12  transition-transform ">
+                    <img src="pic-s/logo-2.webp" alt="لوگو" class="w-12 h-12  transition-transform ">
                 </div>
             </div>
 
@@ -461,38 +460,54 @@
 
                 <div class="flex justify-center md:justify-start order-1 md:order-2 mt-4 md:mt-0" data-aos="fade-left"
                     data-aos-duration="800" data-aos-delay="150">
-                    <img src="pic-s/logo-2.webp" loading="lazy"
-                        class="w-48 h-48 md:w-96 md:h-96 ">
+                    <img src="pic-s/logo-2.webp" loading="lazy" class="w-48 h-48 md:w-96 md:h-96 ">
                 </div>
             </section>
 
             <!-- بخش درباره من -->
-            <section id="about" class="py-20 border-t border-white/10">
-                <h2 class="text-3xl md:text-4xl font-bold text-[#BF2715] mb-8" data-aos="fade-up">درباره من</h2>
-                <p class="text-gray-300 text-lg leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-                    من محمد نجفی هستم. توسعه دهنده فرانت اند و طراح رابط کاربری با تمرکز روی طراحی دیجیتال و ایجاد تجربه
-                    های
-                    کاربری مدرن و حرفه ای.
-                    عاشق طراحی، تصمیم گیری و مدیریت سیستم های مختلف هستم و همیشه به دنبال یادگیری تکنولوژی های جدید برای
-                    ساخت پروژه های خلاقانه و با کیفیت.
-                </p>
-                <br>
-                <div class="mt-6 md:mt-8" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <a href="about-me.html" class="inline-block px-6 md:px-8 py-2 md:py-3 bg-[#A94438]/20 text-white rounded-full 
-                            backdrop-blur-md border border-white/20 
-                            hover:bg-[#BF2715]/40 hover:border-white/30 
-                            transition-all duration-300 shadow-lg hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.2)] 
-                            hover:scale-105 text-sm md:text-base">
-                        بیشتر بدانید ...
-                    </a>
+            <!-- بخش درباره من -->
+            <section id="about" class="py-20 border-t border-white/10 px-4 md:px-0">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#BF2715] mb-8" data-aos="fade-up">
+                    درباره من
+                </h2>
+
+                <!-- 👇 محدود شدن عرض فقط در موبایل -->
+                <div class="max-w-xs sm:max-w-sm md:max-w-none mx-auto">
+                    <p class="text-gray-300 text-lg leading-relaxed text-justify md:text-right" data-aos="fade-up"
+                        data-aos-delay="100">
+                        من محمد نجفی هستم. توسعه دهنده فرانت اند و طراح رابط کاربری با تمرکز روی طراحی دیجیتال و ایجاد
+                        تجربه
+                        های کاربری مدرن و حرفه ای.
+                        عاشق طراحی، تصمیم گیری و مدیریت سیستم های مختلف هستم و همیشه به دنبال یادگیری تکنولوژی های جدید
+                        برای
+                        ساخت پروژه های خلاقانه و با کیفیت.
+                    </p>
+
+                    <br>
+
+                    <div class="mt-6 md:mt-8" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                        <a href="about-me.html" class="inline-block px-6 md:px-8 py-2 md:py-3 bg-[#A94438]/20 text-white rounded-full 
+                backdrop-blur-md border border-white/20 
+                hover:bg-[#BF2715]/40 hover:border-white/30 
+                transition-all duration-300 shadow-lg hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.2)] 
+                hover:scale-105 text-sm md:text-base">
+                            بیشتر بدانید ...
+                        </a>
+                    </div>
                 </div>
             </section>
 
             <!-- بخش مهارت ها -->
-            <section id="skills" class="py-20 border-t border-white/10">
-                <h2 class="text-3xl md:text-4xl font-bold text-[#BF2715] mb-8" data-aos="fade-up">مهارت های من</h2>
-                <div class="space-y-6">
-                    <div class="skill-item" data-skill="95">
+            <!-- بخش مهارت ها -->
+            <section id="skills" class="py-20 border-t border-white/10 px-4 md:px-0">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#BF2715] mb-8" data-aos="fade-up">
+                    مهارت های من
+                </h2>
+
+                <!-- 👇 فقط اینجا در موبایل کوچیک‌تر شده -->
+                <div class="space-y-6 w-full max-w-xs sm:max-w-sm md:max-w-none mx-auto">
+
+                    <div class="skill-item w-full" data-skill="95">
                         <div class="flex justify-between mb-2">
                             <span>HTML</span>
                             <span class="skill-percent">0%</span>
@@ -501,7 +516,8 @@
                             <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
                         </div>
                     </div>
-                    <div class="skill-item" data-skill="90">
+
+                    <div class="skill-item w-full" data-skill="90">
                         <div class="flex justify-between mb-2">
                             <span>CSS</span>
                             <span class="skill-percent">0%</span>
@@ -510,7 +526,8 @@
                             <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
                         </div>
                     </div>
-                    <div class="skill-item" data-skill="95">
+
+                    <div class="skill-item w-full" data-skill="95">
                         <div class="flex justify-between mb-2">
                             <span>Tailwind CSS</span>
                             <span class="skill-percent">0%</span>
@@ -519,7 +536,8 @@
                             <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
                         </div>
                     </div>
-                    <div class="skill-item" data-skill="85">
+
+                    <div class="skill-item w-full" data-skill="85">
                         <div class="flex justify-between mb-2">
                             <span>JavaScript</span>
                             <span class="skill-percent">0%</span>
@@ -528,7 +546,8 @@
                             <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
                         </div>
                     </div>
-                    <div class="skill-item" data-skill="80">
+
+                    <div class="skill-item w-full" data-skill="80">
                         <div class="flex justify-between mb-2">
                             <span>React</span>
                             <span class="skill-percent">0%</span>
@@ -537,7 +556,8 @@
                             <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
                         </div>
                     </div>
-                    <div class="skill-item" data-skill="90">
+
+                    <div class="skill-item w-full" data-skill="90">
                         <div class="flex justify-between mb-2">
                             <span>Git & GitHub</span>
                             <span class="skill-percent">0%</span>
@@ -546,7 +566,8 @@
                             <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
                         </div>
                     </div>
-                    <div class="skill-item" data-skill="85">
+
+                    <div class="skill-item w-full" data-skill="85">
                         <div class="flex justify-between mb-2">
                             <span>Adobe XD</span>
                             <span class="skill-percent">0%</span>
@@ -555,14 +576,21 @@
                             <div class="bg-[#BF2715] h-3 rounded-full progress-bar" style="width: 0%"></div>
                         </div>
                     </div>
+
                 </div>
             </section>
 
+            
             <!-- بخش نمونه کارها -->
-            <section id="portfolio" class="py-20 border-t border-white/10">
-                <h2 class="text-3xl md:text-4xl font-bold text-[#BF2715] mb-8" data-aos="fade-up">نمونه کارهای منتخب
+            <section id="portfolio" class="py-20 border-t border-white/10 px-4 md:px-0">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#BF2715] mb-8" data-aos="fade-up">
+                    نمونه کارهای منتخب
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- 👇 محدودیت عرض فقط برای موبایل -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-xs sm:max-w-sm md:max-w-none mx-auto">
+
                     <a href="pet-dock.html" class="block group">
                         <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 
                 hover:bg-white/10 transition-all duration-300 
@@ -591,18 +619,21 @@
 
                         </div>
                     </a>
+
                     <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105"
                         data-aos="fade-up" data-aos-delay="100">
                         <div class="w-full h-40 bg-gradient-to-br from-[#BF2715] to-[#BF2715] rounded-lg mb-4"></div>
                         <h3 class="text-xl font-bold mb-2">وبسایت</h3>
                         <p class="text-gray-400">طراحی UI/UX</p>
                     </div>
+
                     <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105"
                         data-aos="fade-up" data-aos-delay="200">
                         <div class="w-full h-40 bg-gradient-to-br from-[#BF2715] to-[#BF2715] rounded-lg mb-4"></div>
                         <h3 class="text-xl font-bold mb-2">وبسایت</h3>
                         <p class="text-gray-400">طراحی رابط کاربری</p>
                     </div>
+
                 </div>
             </section>
 

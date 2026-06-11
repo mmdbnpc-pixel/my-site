@@ -396,60 +396,60 @@
             style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 1px); background-size: 40px 40px;">
         </div>
 
-        <header class="p-5 relative z-50">
+        <header id="mainHeader"
+            class="fixed top-0 left-0 w-full z-[999] py-2 px-3 transition-all duration-300 bg-transparent">
+
             <div class="flex justify-between items-center">
-                <div class="md:hidden">
-                    <button id="menuBtn"
-                        class="text-white text-4xl drop-shadow-[0_0_10px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-110">
-                        ☰
-                    </button>
+
+                <!-- همبرگر (سمت راست مثل حالت قبلی سایتت) -->
+                <button id="menuBtn" class="text-white text-4xl transition-all duration-300 hover:scale-110 md:hidden">
+                    ☰
+                </button>
+
+                <!-- لوگو (وسط/چپ بسته به RTL) -->
+                <div class="flex-shrink-0">
+                    <img src="pic-s/logo-2.webp" alt="لوگو" class="w-12 h-12 md:w-14 md:h-14">
                 </div>
-                <div class="flex-shrink-0 md:hidden">
-                    <img src="pic-s/logo-2.webp" alt="لوگو"
-                        class="w-12 h-12  transition-transform">
-                </div>
+
             </div>
 
-            <nav class="hidden md:flex justify-center items-center gap-5 md:gap-8 mt-4">
-                <div class="overflow-hidden h-[60px]">
-                    <a href="index.html"
-                        class="block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl opacity-0 animate-[revealItem_0.3s_ease-out_forwards] transition-all duration-300 hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/20 hover:rounded-full hover:scale-105"
-                        style="animation-delay:0s">خانه</a>
-                </div>
-                <div class="overflow-hidden h-[60px]">
-                    <a href="about-me.html"
-                        class="block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl opacity-0 animate-[revealItem_0.3s_ease-out_forwards] transition-all duration-300 hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/20 hover:rounded-full hover:scale-105"
-                        style="animation-delay:0.25s">درباره من</a>
-                </div>
-                <div class="overflow-hidden h-[60px]">
-                    <a href="mahart-ha.html"
-                        class="block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl opacity-0 animate-[revealItem_0.3s_ease-out_forwards] transition-all duration-300 hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/20 hover:rounded-full hover:scale-105"
-                        style="animation-delay:0.5s">مهارت ها</a>
-                </div>
-                <div class="overflow-hidden h-[60px]">
-                    <a href="#contact"
-                        class="block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl opacity-0 animate-[revealItem_0.3s_ease-out_forwards] transition-all duration-300 hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/20 hover:rounded-full hover:scale-105"
-                        style="animation-delay:1s">ارتباط با من</a>
-                </div>
-            </nav>
+            <!-- منوی موبایل -->
+            <!-- منوی موبایل -->
+            <div id="mobileMenu"
+                class="mt-0.5 origin-top scale-y-0 opacity-0 pointer-events-none h-0 overflow-hidden transition-all duration-200">
 
-            <div id="mobileMenu" class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-500">
                 <div
-                    class="mt-4 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-2xl p-4 shadow-[0_0_40px_rgba(255,255,255,0.08)] text-right">
-                    <div><a href="index.html"
-                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">خانه</a>
-                    </div>
-                    <div><a href="about-me.html"
-                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">درباره
-                            من</a></div>
-                    <div><a href="mahart-ha.html"
-                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">مهارت
-                            ها</a></div>
-                    <div><a href="#contact"
-                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">ارتباط
-                            با من</a></div>
+                    class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-1 text-right shadow-md space-y-0.5">
+
+                    <a href="index.html"
+                        class="mobile-item block px-4 py-1 text-white rounded-lg hover:bg-white/10 transition-all">
+                        خانه
+                    </a>
+
+                    <a href="about-me.html"
+                        class="mobile-item block px-4 py-1 text-white rounded-lg hover:bg-white/10 transition-all">
+                        درباره من
+                    </a>
+
+                    <a href="mahart-ha.html"
+                        class="mobile-item block px-4 py-1 text-white rounded-lg hover:bg-white/10 transition-all">
+                        مهارت ها
+                    </a>
+
+                    <a href="#portfolio"
+                        class="mobile-item block px-4 py-1 text-white rounded-lg hover:bg-white/10 transition-all">
+                        نمونه کارها
+                    </a>
+
+                    <a href="#contact"
+                        class="mobile-item block px-4 py-1 text-white rounded-lg hover:bg-white/10 transition-all">
+                        ارتباط با من
+                    </a>
+
                 </div>
             </div>
+
+
         </header>
 
         <section id="about-modern" class="relative min-h-screen flex items-center py-32 overflow-hidden">
@@ -524,33 +524,53 @@
                         </div>
                     </div>
 
+
                     <!-- چپ: متن درباره من -->
                     <div class="text-right w-full lg:w-1/2 animate-[revealUp_1s_ease_forwards]">
-                        <div class="flex items-center gap-4 mb-8 justify-end" data-aos="fade-up">
-                            <span class="w-12 md:w-16 h-[2px] bg-[#BF2715]"></span>
-                            <h2 class="text-4xl md:text-6xl lg:text-8xl font-black">درباره <span
-                                    class="text-[#BF2715] glow-word">من</span></h2>
+
+                        <div dir="rtl" class="w-full mb-8" data-aos="fade-up">
+                            <div class="flex flex-row-reverse items-center justify-end gap-4">
+                                <h2 class="text-4xl md:text-6xl lg:text-8xl font-black">
+                                    درباره <span class="text-[#BF2715] glow-word">من</span>
+                                </h2>
+
+                                <span class="w-12 md:w-20 lg:w-28 xl:w-36 h-[4px] bg-[#BF2715]"></span>
+                            </div>
                         </div>
-                        <div dir="rtl" style="text-align:right;">
+
+                        <div dir="rtl" class="text-right">
                             <p class="text-gray-300 leading-[2] md:leading-[2.5] text-base md:text-xl"
-                                data-aos="fade-up" data-aos-delay="200">محمد نجفی هستم، برنامه‌نویس فرانت‌اند با تمرکز
-                                بر طراحی و توسعه وب‌سایت‌های کاربرمحور.</p>
+                                data-aos="fade-up" data-aos-delay="200">
+                                محمد نجفی هستم، برنامه‌نویس فرانت‌اند با تمرکز بر طراحی و توسعه وب‌سایت‌های کاربرمحور.
+                            </p>
+
                             <p class="text-gray-300 leading-[2] md:leading-[2.5] text-base md:text-xl mt-4"
-                                data-aos="fade-up" data-aos-delay="400">حوزه فعالیت من شامل طراحی رابط کاربری (UI)،
-                                طراحی تجربه کاربری (UX) و پیاده‌سازی فرانت‌اند وب‌سایت‌ها می‌شود. هدف من در هر پروژه،
-                                ارائه محصولی است که ضمن برخورداری از ظاهری حرفه‌ای و مدرن، از کارایی و سرعت مناسبی نیز
-                                برخوردار باشد.</p>
+                                data-aos="fade-up" data-aos-delay="400">
+                                حوزه فعالیت من شامل طراحی رابط کاربری (UI)، طراحی تجربه کاربری (UX) و پیاده‌سازی
+                                فرانت‌اند وب‌سایت‌ها می‌شود.
+                                هدف من در هر پروژه، ارائه محصولی است که ضمن برخورداری از ظاهری حرفه‌ای و مدرن، از کارایی
+                                و سرعت مناسبی نیز
+                                برخوردار باشد.
+                            </p>
+
                             <p class="text-gray-300 leading-[2] md:leading-[2.5] text-base md:text-xl mt-4"
-                                data-aos="fade-up" data-aos-delay="600">در فرآیند کاری خود، به جزئیاتی مانند ریسپانسیو
-                                بودن در دستگاه‌های مختلف، بهینه‌سازی زمان بارگذاری، رعایت اصول دسترسی‌پذیری و ساختار
-                                تمیز کدها توجه ویژه دارم. معتقدم یک وب‌سایت خوب باید بدون نیاز به راهنمایی اضافی، کاربر
-                                را به درستی هدایت کرده و تجربه‌ای بدون نقص برای او رقم بزند.</p>
+                                data-aos="fade-up" data-aos-delay="600">
+                                در فرآیند کاری خود، به جزئیاتی مانند ریسپانسیو بودن در دستگاه‌های مختلف، بهینه‌سازی زمان
+                                بارگذاری، رعایت اصول
+                                دسترسی‌پذیری و ساختار تمیز کدها توجه ویژه دارم.
+                            </p>
+
                             <p class="text-gray-300 leading-[2] md:leading-[2.5] text-base md:text-xl mt-4"
-                                data-aos="fade-up" data-aos-delay="800">همکاری با کسب‌وکارها و افرادی که به دنبال یک
-                                راه‌حل حرفه‌ای و قابل اعتماد در حوزه وب‌سایت هستند، برای من ارزشمند است. در صورت تمایل،
-                                می‌توانید نمونه پروژه‌های انجام‌شده را در بخش نمونه‌کارها در <a href="index.html"
-                                    class="text-[#BF2715] hover:text-[#ff6b5b] transition-all duration-300 hover:underline">صفحه
-                                    اصلی</a> مشاهده نمایید.</p>
+                                data-aos="fade-up" data-aos-delay="800">
+                                همکاری با کسب‌وکارها و افرادی که به دنبال یک راه‌حل حرفه‌ای و قابل اعتماد در حوزه
+                                وب‌سایت هستند، برای من
+                                ارزشمند است. در صورت تمایل، می‌توانید نمونه پروژه‌های انجام‌شده را در بخش نمونه‌کارها در
+                                <a href="index.html"
+                                    class="text-[#BF2715] hover:text-[#ff6b5b] transition-all duration-300 hover:underline">
+                                    صفحه اصلی
+                                </a>
+                                مشاهده نمایید.
+                            </p>
                         </div>
                     </div>
                 </div>
