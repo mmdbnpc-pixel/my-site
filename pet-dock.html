@@ -248,6 +248,26 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* ===== هدر موبایل ثابت ===== */
+        #mobile-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 20px;
+            transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        #mobile-header.scrolled {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -327,120 +347,67 @@
 
         <header class="p-5 relative z-50">
 
-            <div class="flex justify-between items-center">
-                <div class="md:hidden">
+            <!-- موبایل هدر جدید -->
+            <div id="mobile-header" class="md:hidden">
+                <div class="flex justify-between items-center">
                     <button id="menuBtn" class="text-white text-4xl
-                        drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]
-                        transition-all duration-300
-                        hover:scale-110
-                        hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.8)]">
+                drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]
+                transition-all duration-300 hover:scale-110">
                         ☰
                     </button>
+
+                    <img src="pic-s/logo-2.webp" alt="لوگو" class="w-12 h-12">
                 </div>
 
-                <div class="flex-shrink-0 md:hidden">
-                    <img src="pic-s/logo-2.webp" alt="لوگو"
-                        class="w-12 h-12  transition-transform ">
+                <div id="mobileMenu" class=" max-h-0 opacity-0 transition-all duration-500">
+                    <div
+                        class=" rounded-3xl border border-white/10 bg-white/5 backdrop-blur-2xl p-4 shadow-[0_0_40px_rgba(255,255,255,0.08)] text-right overflow-hidden ">
+
+                        <div><a href="index.html"
+                                class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300">خانه</a>
+                        </div>
+
+                        <div><a href="about-me.html"
+                                class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300">درباره
+                                من</a></div>
+
+                        <div><a href="mahart-ha.html"
+                                class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300">مهارت
+                                ها</a></div>
+
+                        <div><a href="#contact"
+                                class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300">ارتباط
+                                با من</a></div>
+                    </div>
                 </div>
             </div>
 
-
+            <!-- دسکتاپ (همان قبلی خودت) -->
             <nav class="hidden md:flex justify-center items-center gap-5 md:gap-8 mt-4">
-
                 <div class="overflow-hidden h-[60px]">
-                    <a href="index.html" class="block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl
-            opacity-0
-            animate-[revealItem_0.3s_ease-out_forwards]
-            transition-all duration-300
-            hover:bg-white/10 hover:backdrop-blur-md
-            hover:border hover:border-white/20
-            hover:rounded-full hover:scale-105
-            hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.2)]" style="animation-delay:0s">
-                        خانه
-                    </a>
+                    <a href="index.html"
+                        class="block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl opacity-0 animate-[revealItem_0.3s_ease-out_forwards] transition-all duration-300 hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/20 hover:rounded-full hover:scale-105"
+                        style="animation-delay:0s">خانه</a>
                 </div>
 
                 <div class="overflow-hidden h-[60px]">
-                    <a href="about-me.html" class="block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl
-            opacity-0
-            animate-[revealItem_0.3s_ease-out_forwards]
-            transition-all duration-300
-            hover:bg-white/10 hover:backdrop-blur-md
-            hover:border hover:border-white/20
-            hover:rounded-full hover:scale-105
-            hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.2)]" style="animation-delay:0.25s">
-                        درباره من
-                    </a>
+                    <a href="about-me.html"
+                        class="block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl opacity-0 animate-[revealItem_0.3s_ease-out_forwards] transition-all duration-300 hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/20 hover:rounded-full hover:scale-105"
+                        style="animation-delay:0.25s">درباره من</a>
                 </div>
 
                 <div class="overflow-hidden h-[60px]">
-                    <a href="mahart-ha.html" class="block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl
-            opacity-0
-            animate-[revealItem_0.3s_ease-out_forwards]
-            transition-all duration-300
-            hover:bg-white/10 hover:backdrop-blur-md
-            hover:border hover:border-white/20
-            hover:rounded-full hover:scale-105
-            hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.2)]" style="animation-delay:0.5s">
-                        مهارت ها
-                    </a>
+                    <a href="mahart-ha.html"
+                        class="block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl opacity-0 animate-[revealItem_0.3s_ease-out_forwards] transition-all duration-300 hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/20 hover:rounded-full hover:scale-105"
+                        style="animation-delay:0.5s">مهارت ها</a>
                 </div>
 
                 <div class="overflow-hidden h-[60px]">
-                    <a href="#contact" class="block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl
-            opacity-0
-            animate-[revealItem_0.3s_ease-out_forwards]
-            transition-all duration-300
-            hover:bg-white/10 hover:backdrop-blur-md
-            hover:border hover:border-white/20
-            hover:rounded-full hover:scale-105
-            hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.2)]" style="animation-delay:1s">
-                        ارتباط با من
-                    </a>
+                    <a href="#contact"
+                        class="block px-5 md:px-7 py-2 md:py-3 text-white text-base md:text-lg rounded-xl opacity-0 animate-[revealItem_0.3s_ease-out_forwards] transition-all duration-300 hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/20 hover:rounded-full hover:scale-105"
+                        style="animation-delay:1s">ارتباط با من</a>
                 </div>
-
             </nav>
-            <div id="mobileMenu" class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-500">
-                <div class="mt-4 rounded-3xl
-                    border border-white/10
-                    bg-white/5
-                    backdrop-blur-2xl
-                    p-4
-                    shadow-[0_0_40px_rgba(255,255,255,0.08)]
-                    text-right">
-
-                    <div class="overflow-hidden">
-                        <a href="index.html"
-                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">
-                            خانه
-                        </a>
-                    </div>
-                    <div class="overflow-hidden">
-                        <a href="about-me.html"
-                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">
-                            درباره من
-                        </a>
-                    </div>
-                    <div class="overflow-hidden">
-                        <a href="mahart-ha.html"
-                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">
-                            مهارت ها
-                        </a>
-                    </div>
-                    <!-- <div class="overflow-hidden">
-                        <a href="#portfolio"
-                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">
-                            نمونه کارها
-                        </a>
-                    </div> -->
-                    <div class="overflow-hidden">
-                        <a href="#contact"
-                            class="mobile-item block px-5 py-2 text-white rounded-xl transition-all duration-300 text-right">
-                            ارتباط با من
-                        </a>
-                    </div>
-                </div>
-            </div>
 
         </header>
 
@@ -743,8 +710,7 @@
                     hover:-translate-y-3
                     hover:shadow-[0_0_40px_rgba(191,39,21,.5)]
                     transition-all duration-500" data-aos="zoom-in">
-                            <img src="pic-s/docki/s-sabad.webp" loading="lazy"
-                                class="w-full h-[220px] object-cover">
+                            <img src="pic-s/docki/s-sabad.webp" loading="lazy" class="w-full h-[220px] object-cover">
                             <div class="p-4 text-center">
                                 <h3 class="text-white text-xl font-bold">صفحه سبد خرید</h3>
                             </div>
@@ -758,8 +724,7 @@
                     hover:-translate-y-3
                     hover:shadow-[0_0_40px_rgba(191,39,21,.5)]
                     transition-all duration-500" data-aos="zoom-in" data-aos-delay="100">
-                            <img src="pic-s/docki/s-mahsol.webp" loading="lazy"
-                                class="w-full h-[220px] object-cover">
+                            <img src="pic-s/docki/s-mahsol.webp" loading="lazy" class="w-full h-[220px] object-cover">
                             <div class="p-4 text-center">
                                 <h3 class="text-white text-xl font-bold">صفحه محصول</h3>
                             </div>
@@ -773,8 +738,7 @@
                     hover:-translate-y-3
                     hover:shadow-[0_0_40px_rgba(191,39,21,.5)]
                     transition-all duration-500" data-aos="zoom-in" data-aos-delay="200">
-                            <img src="pic-s/docki/s-cat.webp" loading="lazy"
-                                class="w-full h-[220px] object-cover">
+                            <img src="pic-s/docki/s-cat.webp" loading="lazy" class="w-full h-[220px] object-cover">
                             <div class="p-4 text-center">
                                 <h3 class="text-white text-xl font-bold">صفحه دسته بندی</h3>
                             </div>
@@ -788,8 +752,7 @@
                     hover:-translate-y-3
                     hover:shadow-[0_0_40px_rgba(191,39,21,.5)]
                     transition-all duration-500" data-aos="zoom-in" data-aos-delay="200">
-                            <img src="pic-s/docki/s-list.webp" loading="lazy"
-                                class="w-full h-[220px] object-cover">
+                            <img src="pic-s/docki/s-list.webp" loading="lazy" class="w-full h-[220px] object-cover">
                             <div class="p-4 text-center">
                                 <h3 class="text-white text-xl font-bold">لیست محصولات</h3>
                             </div>
@@ -803,8 +766,7 @@
                     hover:-translate-y-3
                     hover:shadow-[0_0_40px_rgba(191,39,21,.5)]
                     transition-all duration-500" data-aos="zoom-in" data-aos-delay="200">
-                            <img src="pic-s/docki/s-darbareh.webp" loading="lazy"
-                                class="w-full h-[220px] object-cover">
+                            <img src="pic-s/docki/s-darbareh.webp" loading="lazy" class="w-full h-[220px] object-cover">
                             <div class="p-4 text-center">
                                 <h3 class="text-white text-xl font-bold">درباره ما</h3>
                             </div>
@@ -818,8 +780,7 @@
                     hover:-translate-y-3
                     hover:shadow-[0_0_40px_rgba(191,39,21,.5)]
                     transition-all duration-500" data-aos="zoom-in" data-aos-delay="200">
-                            <img src="pic-s/docki/s-ma.webp" loading="lazy"
-                                class="w-full h-[220px] object-cover">
+                            <img src="pic-s/docki/s-ma.webp" loading="lazy" class="w-full h-[220px] object-cover">
                             <div class="p-4 text-center">
                                 <h3 class="text-white text-xl font-bold">چرا ما</h3>
                             </div>
@@ -1119,6 +1080,15 @@
                 form.reset();
             } else {
                 result.innerHTML = "❌ خطا در ارسال پیام";
+            }
+        });
+        // اسکرول هدر موبایل
+        const mobileHeader = document.getElementById("mobile-header");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 10) {
+                mobileHeader.classList.add("scrolled");
+            } else {
+                mobileHeader.classList.remove("scrolled");
             }
         });
     </script>
